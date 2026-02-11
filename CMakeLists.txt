@@ -13,6 +13,7 @@ add_executable(Breakout
     src/Scenes/TitleScene.cpp
     src/Scenes/GameScene.cpp
     src/Scenes/GameOverScene.cpp
+    src/Entities/Ball.cpp
 )
 
 target_include_directories(Breakout PRIVATE "${CMAKE_SOURCE_DIR}/include")
