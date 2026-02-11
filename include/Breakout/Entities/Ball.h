@@ -4,7 +4,7 @@
 class Ball : public GameObject {
 private:
     sf::CircleShape shape;
-    sf::Vector2f velocity;
+    sf::Vector2f direction;
     float speed;
 
 public:

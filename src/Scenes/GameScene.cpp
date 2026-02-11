@@ -9,6 +9,7 @@ GameScene::GameScene(SharedContext* ctx, std::function<void(SceneType)> changeCb
         
         // make_unique でインスタンス化
         ball = std::make_unique<Ball>(centerX, centerY);
+        paddle = std::make_unique<Paddle> (centerX, 0.8 * (ctx->window->getSize().y));
     }
 
 void GameScene::processInput() {
@@ -18,6 +19,7 @@ void GameScene::processInput() {
             context->window->close();
         }
 
+        // キーボード入力受付
         if (auto key = event->getIf<sf::Event::KeyPressed>()) {
              if (key->scancode == sf::Keyboard::Scan::Enter) {
                 requestSceneChange(SceneType::GameOver);
@@ -25,6 +27,23 @@ void GameScene::processInput() {
                 // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
                 return;
              }
+        }
+        
+        // ---バドル操作---
+        float moveDir = 0.0f;
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+        {
+            moveDir = -1.f;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+        {
+            moveDir = 1.f;
+        }
+
+        if(paddle)
+        {
+            paddle->setDirection(moveDir);
         }
     }
 }
@@ -34,6 +53,11 @@ void GameScene::update(float dt) {
     {
         ball->update(dt);
         ball->checkWindowCollision(*(context->window));
+    }
+
+    if(paddle)
+    {
+        paddle->update(dt);
     }
 }
 
@@ -46,6 +70,11 @@ void GameScene::draw() {
     if(ball)
     {
         ball->draw(*(context->window));
+    }
+
+    if(paddle)
+    {
+        paddle->draw(*(context->window));
     }
     
     context->window->draw(text);
