@@ -1,4 +1,4 @@
-#include <Breakout/Entities/Paddle.h>
+#include "Breakout/Entities/Paddle.h"
 
 Paddle::Paddle(float startX, float startY) {
     shape.setSize({PADDLE_WIDTH, PADDLE_HEIGHT});

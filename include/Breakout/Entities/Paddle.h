@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Breakout/GameObject.h"
 
-class Paddle {
+class Paddle : public GameObject
+{
 private:
     sf::RectangleShape shape;
     float speed;
@@ -14,14 +16,13 @@ private:
 
 public:
     Paddle(float startX, float startY);
-    ~Paddle() = default;
 
-    void update(float dt);
-    void draw(sf::RenderWindow& window);
+    void update(float dt) override;
+    void draw(sf::RenderWindow &window) override;
 
     // 外部から移動方向を指示するメソッド
     // dir: -1(左), 0(停止), 1(右)
     void setDirection(float dirX);
 
-    sf::FloatRect getBounds() const;
+    sf::FloatRect getBounds() const override;
 };

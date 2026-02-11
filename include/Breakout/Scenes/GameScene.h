@@ -2,6 +2,7 @@
 #include "Breakout/Scene.h"
 #include "Breakout/Entities/Ball.h"
 #include "Breakout/Entities/Paddle.h"
+#include "Breakout/Entities/BlockManager.h"
 
 class GameScene : public Scene {
     // シーン遷移リクエスト用のコールバック関数
@@ -10,6 +11,8 @@ class GameScene : public Scene {
     // ボールをスマートポインタで管理
     std::unique_ptr<Ball> ball;
     std::unique_ptr<Paddle> paddle;
+    
+    BlockManager BlockManager;
 
 public:
     GameScene(SharedContext* ctx, std::function<void(SceneType)> changeCb);
