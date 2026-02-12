@@ -110,7 +110,7 @@ void CollisionManager::checkPaddleCollision(Ball &ball, const Paddle &paddle)
         float ballCenter = ball.getPosition().x;
 
         // 中心からの距離を正規化 (-1.0 〜 1.0 の範囲にする)
-        float offset = ballCenter - paddleCenter;
+        float offset = std::abs(ballCenter - paddleCenter);
         float width = paddle.getBounds().size.x;
         float hitFactor = (offset / (width / 2.f));
 

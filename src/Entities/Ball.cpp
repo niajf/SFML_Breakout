@@ -76,13 +76,16 @@ void Ball::bounceFromLeftWall()
 
 void Ball::bounceFromTopWall()
 {
-    direction.y = std::abs(direction.x);
+    direction.y = std::abs(direction.y);
 }
 
 void Ball::bounceFromPaddle(float hitFactor)
 {
+    auto sign = [](float x)
+    { return (x >= 0) ? 1 : -1; };
+
     direction.y = -std::abs(direction.y);
-    direction.x = hitFactor * 1.5f;
+    direction.x = sign(direction.x) * hitFactor;
 
     float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
     if (length != 0.f)
