@@ -35,6 +35,16 @@ sf::FloatRect Ball::getBounds() const
     return shape.getGlobalBounds();
 }
 
+sf::Vector2f Ball::getPosition() const
+{
+    return shape.getPosition();
+}
+
+void Ball::setPosition(sf::Vector2f pos)
+{
+    shape.setPosition(pos);
+}
+
 void Ball::bounceX()
 {
     direction.x = -direction.x;
@@ -54,6 +64,21 @@ void Ball::bounceY()
     }
 }
 
+void Ball::bounceFromRightWall()
+{
+    direction.x = -std::abs(direction.x);
+}
+
+void Ball::bounceFromLeftWall()
+{
+    direction.x = std::abs(direction.x);
+}
+
+void Ball::bounceFromTopWall()
+{
+    direction.y = std::abs(direction.x);
+}
+
 void Ball::bounceFromPaddle(float hitFactor)
 {
     direction.y = -std::abs(direction.y);
@@ -65,37 +90,3 @@ void Ball::bounceFromPaddle(float hitFactor)
         direction /= length;
     }
 }
-
-// 画面外に出ないようにする簡易処理（テスト用）
-void Ball::checkWindowCollision(const sf::RenderWindow &window)
-{
-    sf::Vector2f pos = shape.getPosition();
-    float radius = shape.getRadius();
-
-    // 左壁
-    if (pos.x - radius < 0)
-    {
-        shape.setPosition(sf::Vector2f(radius, pos.y));
-        direction.x = std::abs(direction.x); // 右へ
-    }
-    // 右壁
-    else if (pos.x + radius > window.getSize().x)
-    {
-        shape.setPosition(sf::Vector2f(window.getSize().x - radius, pos.y));
-        direction.x = -std::abs(direction.x); // 左へ
-    }
-    // 天井
-    if (pos.y - radius < 0)
-    {
-        shape.setPosition(sf::Vector2f(pos.x, radius));
-        direction.y = std::abs(direction.y); // 下へ
-    }
-    // 底（ゲームオーバーだが今は反射させる）
-    else if (pos.y + radius > window.getSize().y)
-    {
-        shape.setPosition(sf::Vector2f(pos.x, window.getSize().y - radius));
-        direction.y = -std::abs(direction.y); // 上へ
-    }
-}
-
-// ... 他の実装

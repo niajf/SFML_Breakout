@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Breakout/GameObject.h"
+#include "Breakout/Entities/GameObject.h"
 
 class Paddle : public GameObject
 {
@@ -20,9 +20,12 @@ public:
     void update(float dt) override;
     void draw(sf::RenderWindow &window) override;
 
+    sf::FloatRect getBounds() const override;
+
+    sf::Vector2f getPosition() const;
+    void setPosition(sf::Vector2f pos);
+
     // 外部から移動方向を指示するメソッド
     // dir: -1(左), 0(停止), 1(右)
     void setDirection(float dirX);
-
-    sf::FloatRect getBounds() const override;
 };

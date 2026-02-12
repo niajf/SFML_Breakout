@@ -17,6 +17,7 @@ add_executable(Breakout
     src/Entities/Paddle.cpp
     src/Entities/Block.cpp
     src/Entities/BlockManager.cpp
+    src/System/CollisionManager.cpp
 )
 
 target_include_directories(Breakout PRIVATE "${CMAKE_SOURCE_DIR}/include")

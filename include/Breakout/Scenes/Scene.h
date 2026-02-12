@@ -1,18 +1,24 @@
 #pragma once
-#include "SharedContext.h"
+#include "Breakout/SharedContext.h"
 #include <functional>
 #include <iostream>
 
 // シーンの種類を定義
-enum class SceneType { Title, Game, GameOver };
+enum class SceneType
+{
+    Title,
+    Game,
+    GameOver
+};
 
 // シーンの基底クラス（インターフェース）
-class Scene {
+class Scene
+{
 protected:
-    SharedContext* context;
+    SharedContext *context;
 
 public:
-    explicit Scene(SharedContext* ctx) : context(ctx) {}
+    explicit Scene(SharedContext *ctx) : context(ctx) {}
     virtual ~Scene() = default;
 
     virtual void processInput() = 0;

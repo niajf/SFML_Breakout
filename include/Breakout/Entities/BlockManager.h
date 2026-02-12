@@ -18,4 +18,6 @@ public:
 
     // 描画処理
     void draw(sf::RenderWindow &window);
+
+    std::vector<Block> &getBlocks();
 };

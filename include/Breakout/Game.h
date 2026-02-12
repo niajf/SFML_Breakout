@@ -2,9 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "SharedContext.h"
-#include "Scene.h"
+#include "Breakout/Scenes/Scene.h"
 
-class Game {
+class Game
+{
 private:
     sf::RenderWindow window;
     sf::Font font;

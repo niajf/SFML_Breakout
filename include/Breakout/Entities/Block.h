@@ -1,5 +1,5 @@
 #pragma once
-#include "Breakout/GameObject.h"
+#include "Breakout/Entities/GameObject.h"
 
 // GameObjectを継承
 class Block : public GameObject

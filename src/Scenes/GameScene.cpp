@@ -11,7 +11,7 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType)> changeCb
     ball = std::make_unique<Ball>(centerX, centerY);
     paddle = std::make_unique<Paddle>(centerX, 0.8 * (ctx->window->getSize().y));
 
-    BlockManager.createLevel(5, 10);
+    blockManager.createLevel(5, 10);
 }
 
 void GameScene::processInput()
@@ -60,7 +60,6 @@ void GameScene::update(float dt)
     if (ball)
     {
         ball->update(dt);
-        ball->checkWindowCollision(*(context->window));
     }
 
     if (paddle)
@@ -70,7 +69,7 @@ void GameScene::update(float dt)
 
     if (ball)
     {
-        BlockManager.update(*ball);
+        blockManager.update(*ball);
     }
 }
 
@@ -91,7 +90,20 @@ void GameScene::draw()
         paddle->draw(*(context->window));
     }
 
-    BlockManager.draw(*(context->window));
+    blockManager.draw(*(context->window));
+
+    if (ball && paddle)
+    {
+        collisionManager.update(*ball, *paddle, blockManager, *context->window);
+    }
+
+    if (ball && ball->getPosition().y > context->window->getSize().y)
+    {
+        requestSceneChange(SceneType::GameOver);
+
+        // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
+        return;
+    }
 
     context->window->draw(text);
 }

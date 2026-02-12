@@ -1,13 +1,14 @@
 #pragma once
-#include "Breakout/Scene.h"
+#include "Breakout/Scenes/Scene.h"
 
-class TitleScene : public Scene {
+class TitleScene : public Scene
+{
     // シーン遷移リクエスト用のコールバック関数
     std::function<void(SceneType)> requestSceneChange;
 
 public:
-    TitleScene(SharedContext* ctx, std::function<void(SceneType)> changeCb);
-    
+    TitleScene(SharedContext *ctx, std::function<void(SceneType)> changeCb);
+
     void processInput() override;
     void update(float dt) override;
     void draw() override;
