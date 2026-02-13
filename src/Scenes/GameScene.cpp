@@ -6,7 +6,8 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> cha
       score(*(ctx->font)),
       playState(PlayState::Ready),
       readyTimer(2.0f), // 2秒間待機する
-      readyText(*(ctx->font), "READY...", 40)
+      readyText(*(ctx->font), "READY...", 40),
+      controlsText(*(ctx->font), "MOVE A / D", 12)
 {
     sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
 
@@ -25,6 +26,9 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> cha
     readyText.setOutlineColor(sf::Color::Black);
     centerTextOrigin(readyText);
     readyText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
+
+    controlsText.setFillColor(sf::Color(180, 180, 180, 150));
+    controlsText.setPosition({15.f, windowSize.y - 25.f});
 }
 
 void GameScene::processInput()
@@ -125,6 +129,7 @@ void GameScene::draw()
 
     blockManager.draw(*(context->window));
     score.draw(*(context->window));
+    context->window->draw(controlsText);
 
     if (playState == PlayState::Ready)
     {
