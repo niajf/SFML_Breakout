@@ -120,9 +120,10 @@ void CollisionManager::checkPaddleCollision(Ball &ball, const Paddle &paddle)
     }
 }
 
-void CollisionManager::checkBlockCollision(Ball &ball, BlockManager &blockManager)
+int CollisionManager::checkBlockCollision(Ball &ball, BlockManager &blockManager)
 {
     auto &blocks = blockManager.getBlocks();
+    int destroyedCount = 0;
 
     for (auto &block : blocks)
     {
@@ -133,7 +134,10 @@ void CollisionManager::checkBlockCollision(Ball &ball, BlockManager &blockManage
         if (resolveCollision(ball, block.getBounds()))
         {
             block.destroy();
+            destroyedCount++;
             break; // 1フレームに1つだけ壊す
         }
     }
+
+    return destroyedCount;
 }

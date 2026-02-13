@@ -8,6 +8,7 @@ enum class SceneType
 {
     Title,
     Game,
+    GameClear,
     GameOver
 };
 

@@ -4,10 +4,10 @@
 class GameOverScene : public Scene
 {
     // シーン遷移リクエスト用のコールバック関数
-    std::function<void(SceneType)> requestSceneChange;
+    std::function<void(SceneType, int)> requestSceneChange;
 
 public:
-    GameOverScene(SharedContext *ctx, std::function<void(SceneType)> changeCb);
+    GameOverScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb);
 
     void processInput() override;
     void update(float dt) override;

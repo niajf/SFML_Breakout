@@ -1,7 +1,7 @@
 #include "Breakout/Scenes/GameScene.h"
 
-GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType)> changeCb)
-    : Scene(ctx), requestSceneChange(changeCb)
+GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb)
+    : Scene(ctx), requestSceneChange(changeCb), score(*(ctx->font))
 {
     // 画面中央にボールを生成
     float centerX = ctx->window->getSize().x / 2.f;
@@ -29,7 +29,7 @@ void GameScene::processInput()
         {
             if (key->scancode == sf::Keyboard::Scan::Enter)
             {
-                requestSceneChange(SceneType::GameOver);
+                requestSceneChange(SceneType::GameClear, score.getValue());
 
                 // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
                 return;
@@ -67,9 +67,27 @@ void GameScene::update(float dt)
         paddle->update(dt);
     }
 
-    if (ball)
+    if (ball && paddle)
     {
-        blockManager.update(*ball);
+        // collisionManager.update(*ball, *paddle, blockManager, *context->window);
+        collisionManager.checkWallCollision(*ball, *context->window);
+        collisionManager.checkPaddleCollision(*ball, *paddle);
+        int destroyed = collisionManager.checkBlockCollision(*ball, blockManager);
+
+        if (destroyed > 0)
+        {
+            score.add(destroyed);
+        }
+
+        score.updateText();
+    }
+
+    if (ball && ball->getPosition().y > context->window->getSize().y)
+    {
+        requestSceneChange(SceneType::GameOver, 0);
+
+        // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
+        return;
     }
 }
 
@@ -91,19 +109,5 @@ void GameScene::draw()
     }
 
     blockManager.draw(*(context->window));
-
-    if (ball && paddle)
-    {
-        collisionManager.update(*ball, *paddle, blockManager, *context->window);
-    }
-
-    if (ball && ball->getPosition().y > context->window->getSize().y)
-    {
-        requestSceneChange(SceneType::GameOver);
-
-        // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
-        return;
-    }
-
-    context->window->draw(text);
+    score.draw(*(context->window));
 }

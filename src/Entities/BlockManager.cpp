@@ -30,12 +30,6 @@ void BlockManager::createLevel(int rows, int cols)
 
 void BlockManager::update(Ball &ball)
 {
-    for (auto &block : blocks)
-    {
-        // すでに壊れているブロックは無視
-        if (block.isDestroyed())
-            continue;
-    }
 }
 
 void BlockManager::draw(sf::RenderWindow &window)

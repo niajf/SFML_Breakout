@@ -12,12 +12,14 @@ add_executable(Breakout
     src/Game.cpp
     src/Scenes/TitleScene.cpp
     src/Scenes/GameScene.cpp
+    src/Scenes/GameClearScene.cpp
     src/Scenes/GameOverScene.cpp
     src/Entities/Ball.cpp
     src/Entities/Paddle.cpp
     src/Entities/Block.cpp
     src/Entities/BlockManager.cpp
     src/System/CollisionManager.cpp
+    src/UI/Score.cpp
 )
 
 target_include_directories(Breakout PRIVATE "${CMAKE_SOURCE_DIR}/include")
