@@ -11,7 +11,7 @@ Ball::Ball(float x, float y) : speed(300.f)
     shape.setFillColor(sf::Color::Cyan);
 
     // 初期速度（斜めに飛ばすなど）
-    direction = {1.f, -1.f};
+    direction = {0.f, -1.f};
 }
 
 void Ball::update(float dt)

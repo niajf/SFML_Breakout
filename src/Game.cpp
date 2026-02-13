@@ -1,7 +1,6 @@
 #include "Breakout/Game.h"
 #include "Breakout/Scenes/TitleScene.h"
 #include "Breakout/Scenes/GameScene.h"
-#include "Breakout/Scenes/GameOverScene.h"
 #include "Breakout/Scenes/GameClearScene.h"
 #include <iostream>
 
@@ -35,10 +34,6 @@ void Game::switchTo(SceneType type, int score = 0)
 
     case SceneType::Game:
         currentScene = std::make_unique<GameScene>(&context, changeCb);
-        break;
-
-    case SceneType::GameOver:
-        currentScene = std::make_unique<GameOverScene>(&context, changeCb);
         break;
 
     case SceneType::GameClear:

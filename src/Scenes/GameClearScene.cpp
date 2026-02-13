@@ -8,9 +8,9 @@ GameClearScene::GameClearScene(SharedContext *ctx, std::function<void(SceneType,
       requestSceneChange(changeCb),
       finalScore(score),
       elapsedTime(0.f),
-      clearText(*(ctx->font), "STAGE CLEAR!", 50),
+      clearText(*(ctx->font), "GAME OVER!", 50),
       scoreText(*(ctx->font), "", 30),
-      promptText(*(ctx->font), "PRESS ENTER TO NEXT STAGE", 20)
+      promptText(*(ctx->font), "PRESS ENTER TO NEXT GAME", 20)
 {
     sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
 
@@ -57,7 +57,7 @@ void GameClearScene::processInput()
             {
                 if (key->scancode == sf::Keyboard::Scan::Enter)
                 {
-                    requestSceneChange(SceneType::Title, 0);
+                    requestSceneChange(SceneType::Game, 0);
 
                     // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
                     return;

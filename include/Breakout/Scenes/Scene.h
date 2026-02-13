@@ -8,8 +8,7 @@ enum class SceneType
 {
     Title,
     Game,
-    GameClear,
-    GameOver
+    GameClear
 };
 
 // シーンの基底クラス（インターフェース）

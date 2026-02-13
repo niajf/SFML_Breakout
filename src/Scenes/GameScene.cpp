@@ -1,17 +1,30 @@
 #include "Breakout/Scenes/GameScene.h"
 
 GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb)
-    : Scene(ctx), requestSceneChange(changeCb), score(*(ctx->font))
+    : Scene(ctx),
+      requestSceneChange(changeCb),
+      score(*(ctx->font)),
+      playState(PlayState::Ready),
+      readyTimer(2.0f), // 2秒間待機する
+      readyText(*(ctx->font), "READY...", 40)
 {
+    sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
+
     // 画面中央にボールを生成
     float centerX = ctx->window->getSize().x / 2.f;
     float centerY = ctx->window->getSize().y / 2.f;
 
-    // make_unique でインスタンス化
+    // エンティティの初期化
     ball = std::make_unique<Ball>(centerX, centerY);
     paddle = std::make_unique<Paddle>(centerX, 0.8 * (ctx->window->getSize().y));
 
+    // ブロックを配置
     blockManager.createLevel(5, 10);
+    readyText.setFillColor(sf::Color::Yellow);
+    readyText.setOutlineThickness(3.f);
+    readyText.setOutlineColor(sf::Color::Black);
+    centerTextOrigin(readyText);
+    readyText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
 }
 
 void GameScene::processInput()
@@ -22,18 +35,6 @@ void GameScene::processInput()
         if (event->is<sf::Event::Closed>())
         {
             context->window->close();
-        }
-
-        // キーボード入力受付
-        if (auto key = event->getIf<sf::Event::KeyPressed>())
-        {
-            if (key->scancode == sf::Keyboard::Scan::Enter)
-            {
-                requestSceneChange(SceneType::GameClear, score.getValue());
-
-                // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
-                return;
-            }
         }
 
         // ---バドル操作---
@@ -57,37 +58,55 @@ void GameScene::processInput()
 
 void GameScene::update(float dt)
 {
-    if (ball)
+    if (playState == PlayState::Ready)
     {
-        ball->update(dt);
-    }
+        readyTimer -= dt; // タイマーを減らす
 
-    if (paddle)
-    {
-        paddle->update(dt);
-    }
+        // プレイヤーが準備できるように、パドルだけは動かせるようにする（UXの向上）
+        if (paddle)
+            paddle->update(dt);
 
-    if (ball && paddle)
-    {
-        // collisionManager.update(*ball, *paddle, blockManager, *context->window);
-        collisionManager.checkWallCollision(*ball, *context->window);
-        collisionManager.checkPaddleCollision(*ball, *paddle);
-        int destroyed = collisionManager.checkBlockCollision(*ball, blockManager);
-
-        if (destroyed > 0)
+        // 2秒経過したらプレイ開始！
+        if (readyTimer <= 0.f)
         {
-            score.add(destroyed);
+            playState = PlayState::Playing;
+        }
+    }
+
+    else if (playState == PlayState::Playing)
+    {
+        if (ball)
+        {
+            ball->update(dt);
         }
 
-        score.updateText();
-    }
+        if (paddle)
+        {
+            paddle->update(dt);
+        }
 
-    if (ball && ball->getPosition().y > context->window->getSize().y)
-    {
-        requestSceneChange(SceneType::GameOver, 0);
+        if (ball && paddle)
+        {
+            // collisionManager.update(*ball, *paddle, blockManager, *context->window);
+            collisionManager.checkWallCollision(*ball, *context->window);
+            collisionManager.checkPaddleCollision(*ball, *paddle);
+            int destroyed = collisionManager.checkBlockCollision(*ball, blockManager);
 
-        // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
-        return;
+            if (destroyed > 0)
+            {
+                score.add(destroyed);
+            }
+
+            score.updateText();
+        }
+
+        if (ball && ball->getPosition().y > context->window->getSize().y)
+        {
+            requestSceneChange(SceneType::GameClear, score.getValue());
+
+            // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
+            return;
+        }
     }
 }
 
@@ -99,15 +118,27 @@ void GameScene::draw()
     text.setPosition(sf::Vector2f(context->window->getSize()) / 2.f);
 
     if (ball)
-    {
         ball->draw(*(context->window));
-    }
 
     if (paddle)
-    {
         paddle->draw(*(context->window));
-    }
 
     blockManager.draw(*(context->window));
     score.draw(*(context->window));
+
+    if (playState == PlayState::Ready)
+    {
+        // 少しフワフワさせる演出（TitleSceneの応用）
+        float offsetY = std::sin(readyTimer * 10.f) * 5.f;
+        readyText.setPosition({context->window->getSize().x / 2.f, (context->window->getSize().y * 0.6f) + offsetY});
+
+        context->window->draw(readyText);
+    }
+}
+
+void GameScene::centerTextOrigin(sf::Text &text)
+{
+    sf::FloatRect bounds = text.getLocalBounds();
+    text.setOrigin({bounds.position.x + bounds.size.x / 2.f,
+                    bounds.position.y + bounds.size.y / 2.f});
 }

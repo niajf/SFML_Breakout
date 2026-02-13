@@ -13,7 +13,6 @@ add_executable(Breakout
     src/Scenes/TitleScene.cpp
     src/Scenes/GameScene.cpp
     src/Scenes/GameClearScene.cpp
-    src/Scenes/GameOverScene.cpp
     src/Entities/Ball.cpp
     src/Entities/Paddle.cpp
     src/Entities/Block.cpp
