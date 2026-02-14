@@ -13,7 +13,7 @@ private:
     std::unique_ptr<Scene> currentScene;
 
     // 内部で使用するシーン切り替えメソッド
-    void switchTo(SceneType type, int score);
+    void switchTo(SceneType type, int score, int stage);
 
 public:
     Game();

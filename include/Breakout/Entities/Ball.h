@@ -9,7 +9,7 @@ private:
     float speed;
 
 public:
-    Ball(float x, float y);
+    Ball(float x, float y, int stage);
 
     void update(float dt) override;
     void draw(sf::RenderWindow &window) override;

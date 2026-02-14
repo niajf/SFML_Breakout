@@ -1,6 +1,6 @@
 #include "Breakout/Scenes/TitleScene.h"
 
-TitleScene::TitleScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb)
+TitleScene::TitleScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb)
     : Scene(ctx),
       requestSceneChange(changeCb),
       elapsedTime(0.f),
@@ -43,7 +43,7 @@ void TitleScene::processInput()
         {
             if (key->scancode == sf::Keyboard::Scan::Enter)
             {
-                requestSceneChange(SceneType::Game, 0);
+                requestSceneChange(SceneType::Game, 0, 0);
 
                 // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
                 return;

@@ -2,7 +2,9 @@
 #include <sstream>
 #include <iomanip> // std::setw, std::setfill 用
 
-Score::Score(sf::Font &font) : value(0), stage(1), scoreText(font, "SCORE: 00000000", 20)
+Score::Score(sf::Font &font)
+    : value(0),
+      scoreText(font, "SCORE: 00000000", 20)
 {
     // コンストラクタで1回だけフォントや色、位置を設定する
     scoreText.setFillColor(sf::Color::White);
@@ -22,21 +24,20 @@ void Score::updateText()
     scoreText.setString(ss.str());
 }
 
-void Score::add(int destroyedBlocks)
+void Score::add(int destroyedBlocks, int stage)
 {
     // ステージが進むほど獲得スコアが増えるような計算式
-    value += (BASE_POINT * stage) * destroyedBlocks;
+    value += BASE_POINT * (stage + 1) * destroyedBlocks;
 }
 
-void Score::upStage()
+void Score::setScore(int score)
 {
-    stage++;
+    value = score;
 }
 
 void Score::reset()
 {
     value = 0;
-    stage = 1;
 }
 
 int Score::getValue()

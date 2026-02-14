@@ -17,14 +17,14 @@ Game::Game() : window(sf::VideoMode({800, 600}), "Breakout Refactored")
     context.window = &window;
     context.font = &font;
 
-    switchTo(SceneType::Title, 0);
+    switchTo(SceneType::Title, 0, 0);
 }
 
-void Game::switchTo(SceneType type, int score = 0)
+void Game::switchTo(SceneType type, int score, int stage)
 {
     // 次のシーンへの切り替え用コールバック
-    auto changeCb = [this](SceneType newType, int s = 0)
-    { switchTo(newType, s); };
+    auto changeCb = [this](SceneType newType, int score, int stage)
+    { switchTo(newType, score, stage); };
 
     switch (type)
     {
@@ -33,7 +33,7 @@ void Game::switchTo(SceneType type, int score = 0)
         break;
 
     case SceneType::Game:
-        currentScene = std::make_unique<GameScene>(&context, changeCb);
+        currentScene = std::make_unique<GameScene>(&context, changeCb, score, stage);
         break;
 
     case SceneType::GameClear:

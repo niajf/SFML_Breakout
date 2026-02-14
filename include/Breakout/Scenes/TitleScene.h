@@ -4,7 +4,7 @@
 class TitleScene : public Scene
 {
     // シーン遷移リクエスト用のコールバック関数
-    std::function<void(SceneType, int)> requestSceneChange;
+    std::function<void(SceneType, int, int)> requestSceneChange;
 
     float elapsedTime;
 
@@ -19,7 +19,7 @@ class TitleScene : public Scene
     void centerTextOrigin(sf::Text &text);
 
 public:
-    TitleScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb);
+    TitleScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb);
 
     void processInput() override;
     void update(float dt) override;

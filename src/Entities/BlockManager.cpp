@@ -5,12 +5,12 @@ void BlockManager::createLevel(int rows, int cols)
 {
     blocks.clear();
 
-    float blockWidth = 60.f;
-    float blockHeight = 20.f;
+    float blockWidth = 80.f;
+    float blockHeight = 30.f;
     float padding = 10.f; // ブロック間の隙間
 
     float startX = 400.f - (cols / 2) * (blockWidth + padding);
-    float startY = 50.f;
+    float startY = 100.f;
 
     for (int i = 0; i < rows; ++i)
     {

@@ -1,9 +1,10 @@
 #include "Breakout/Scenes/GameScene.h"
 
-GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb)
+GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int s, int st)
     : Scene(ctx),
       requestSceneChange(changeCb),
       score(*(ctx->font)),
+      currentStage(st),
       playState(PlayState::Ready),
       readyTimer(2.0f), // 2秒間待機する
       readyText(*(ctx->font), "READY...", 40),
@@ -16,11 +17,14 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int)> cha
     float centerY = ctx->window->getSize().y / 2.f;
 
     // エンティティの初期化
-    ball = std::make_unique<Ball>(centerX, centerY);
+    ball = std::make_unique<Ball>(centerX, centerY, currentStage);
     paddle = std::make_unique<Paddle>(centerX, 0.8 * (ctx->window->getSize().y));
 
+    score.setScore(s);
+    score.updateText();
+
     // ブロックを配置
-    blockManager.createLevel(5, 10);
+    blockManager.createLevel(4, 6);
     readyText.setFillColor(sf::Color::Yellow);
     readyText.setOutlineThickness(3.f);
     readyText.setOutlineColor(sf::Color::Black);
@@ -97,7 +101,7 @@ void GameScene::update(float dt)
 
             if (destroyed > 0)
             {
-                score.add(destroyed);
+                score.add(destroyed, currentStage);
             }
 
             score.updateText();
@@ -106,7 +110,7 @@ void GameScene::update(float dt)
         // ---ゲームオーバーに遷移---
         if (ball && ball->getPosition().y > context->window->getSize().y)
         {
-            requestSceneChange(SceneType::GameClear, score.getValue());
+            requestSceneChange(SceneType::GameClear, score.getValue(), currentStage);
 
             // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
             return;
@@ -124,7 +128,7 @@ void GameScene::update(float dt)
         }
         if (cleared)
         {
-            requestSceneChange(SceneType::GameClear, score.getValue());
+            requestSceneChange(SceneType::Game, score.getValue(), currentStage + 1);
 
             // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
             return;

@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <cstdint>
 
-GameClearScene::GameClearScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb, int score)
+GameClearScene::GameClearScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int score)
     : Scene(ctx),
       requestSceneChange(changeCb),
       finalScore(score),
@@ -57,7 +57,7 @@ void GameClearScene::processInput()
             {
                 if (key->scancode == sf::Keyboard::Scan::Enter)
                 {
-                    requestSceneChange(SceneType::Game, 0);
+                    requestSceneChange(SceneType::Game, 0, 0);
 
                     // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
                     return;

@@ -4,7 +4,7 @@
 class GameClearScene : public Scene
 {
     // シーン遷移リクエスト用のコールバック関数
-    std::function<void(SceneType, int)> requestSceneChange;
+    std::function<void(SceneType, int, int)> requestSceneChange;
 
     int finalScore;
     float elapsedTime;
@@ -18,7 +18,7 @@ class GameClearScene : public Scene
     void centerTextOrigin(sf::Text &text);
 
 public:
-    GameClearScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb, int score);
+    GameClearScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int score);
 
     void processInput() override;
     void update(float dt) override;

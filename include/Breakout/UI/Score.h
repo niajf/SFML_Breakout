@@ -6,7 +6,6 @@ class Score
 {
 private:
     int value;
-    int stage;
     const int BASE_POINT = 10; // 1ブロックあたりの基本点
 
     sf::Text scoreText;
@@ -18,7 +17,9 @@ public:
     void updateText();
 
     // スコアを加算する（壊したブロック数を渡す）
-    void add(int destroyedBlocks);
+    void add(int destroyedBlocks, int stage);
+
+    void setScore(int score);
 
     // ステージクリア時の処理
     void upStage();

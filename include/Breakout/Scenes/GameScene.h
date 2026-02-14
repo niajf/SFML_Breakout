@@ -14,8 +14,9 @@ enum class PlayState
 
 class GameScene : public Scene
 {
+private:
     // シーン遷移リクエスト用のコールバック関数
-    std::function<void(SceneType, int)> requestSceneChange;
+    std::function<void(SceneType, int, int)> requestSceneChange;
 
     // エンティティとマネージャー
     std::unique_ptr<Ball> ball;
@@ -23,6 +24,7 @@ class GameScene : public Scene
     BlockManager blockManager;
     CollisionManager collisionManager;
     Score score;
+    int currentStage;
 
     // 状態管理用
     PlayState playState;
@@ -36,7 +38,7 @@ class GameScene : public Scene
     void centerTextOrigin(sf::Text &text);
 
 public:
-    GameScene(SharedContext *ctx, std::function<void(SceneType, int)> changeCb);
+    GameScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int s, int st);
 
     void processInput() override;
     void update(float dt) override;

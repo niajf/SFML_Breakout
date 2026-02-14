@@ -18,7 +18,7 @@ protected:
     SharedContext *context;
 
 public:
-    explicit Scene(SharedContext *ctx) : context(ctx) {}
+    explicit Scene(SharedContext *ctx) : context(ctx) {};
     virtual ~Scene() = default;
 
     virtual void processInput() = 0;

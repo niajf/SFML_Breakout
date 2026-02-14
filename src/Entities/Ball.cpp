@@ -2,7 +2,7 @@
 
 const float MIN_Y_DIRECTION = 0.2f;
 
-Ball::Ball(float x, float y) : speed(300.f)
+Ball::Ball(float x, float y, int stage) : speed(300.f * (1 + 0.25f * stage))
 {
     float radius = 10.f;
     shape.setRadius(radius);
