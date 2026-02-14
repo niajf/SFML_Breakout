@@ -91,7 +91,6 @@ void GameScene::update(float dt)
 
         if (ball && paddle)
         {
-            // collisionManager.update(*ball, *paddle, blockManager, *context->window);
             collisionManager.checkWallCollision(*ball, *context->window);
             collisionManager.checkPaddleCollision(*ball, *paddle);
             int destroyed = collisionManager.checkBlockCollision(*ball, blockManager);
@@ -104,7 +103,26 @@ void GameScene::update(float dt)
             score.updateText();
         }
 
+        // ---ゲームオーバーに遷移---
         if (ball && ball->getPosition().y > context->window->getSize().y)
+        {
+            requestSceneChange(SceneType::GameClear, score.getValue());
+
+            // メモリを開放済みのため、メソッドを抜け出さないとエラーが発生する
+            return;
+        }
+
+        //---ゲームクリアに遷移（一時的）---
+        bool cleared = true;
+        for (auto const &block : blockManager.getBlocks())
+        {
+            if (!block.isDestroyed())
+            {
+                cleared = false;
+                break;
+            }
+        }
+        if (cleared)
         {
             requestSceneChange(SceneType::GameClear, score.getValue());
 
