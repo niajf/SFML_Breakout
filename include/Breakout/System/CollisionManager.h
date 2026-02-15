@@ -13,10 +13,10 @@ private:
 
 public:
     // 毎フレーム呼び出すメイン関数
-    void update(Ball &ball, Paddle &paddle, BlockManager &blockManager, const sf::RenderWindow &window);
+    void update(Ball &ball, Paddle &paddle, BlockManager &blockManager);
 
     // 内部処理用のヘルパー関数
-    void checkWallCollision(Ball &ball, const sf::RenderWindow &window);
+    void checkWallCollision(Ball &ball);
     void checkPaddleCollision(Ball &ball, const Paddle &paddle);
     int checkBlockCollision(Ball &ball, BlockManager &blockManager);
 };

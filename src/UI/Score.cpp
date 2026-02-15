@@ -1,15 +1,16 @@
-#include <Breakout/UI/Score.h>
+#include "Breakout/UI/Score.h"
+#include "Breakout/Constants.h"
 #include <sstream>
 #include <iomanip> // std::setw, std::setfill 用
 
 Score::Score(sf::Font &font)
     : value(0),
-      scoreText(font, "SCORE: 00000000", 20)
+      scoreText(font, "SCORE: 00000000", Config::FONT_SIZE_BODY)
 {
     // コンストラクタで1回だけフォントや色、位置を設定する
     scoreText.setFillColor(sf::Color::White);
     scoreText.setPosition(sf::Vector2f(20.f, 20.f));
-    scoreText.setOutlineThickness(2.f);
+    scoreText.setOutlineThickness(Config::FONT_SIZE_OUTLINE_BODY);
     scoreText.setOutlineColor(sf::Color::Black);
 
     // 初期の文字列をセット
@@ -27,7 +28,7 @@ void Score::updateText()
 void Score::add(int destroyedBlocks, int stage)
 {
     // ステージが進むほど獲得スコアが増えるような計算式
-    value += BASE_POINT * (stage + 1) * destroyedBlocks;
+    value += Config::SCORE_BASE_POINT * (stage + 1) * destroyedBlocks;
 }
 
 void Score::setScore(int score)

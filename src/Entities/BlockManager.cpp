@@ -1,16 +1,17 @@
-#include "Breakout/Entities/BlockManager.h"
 #include <cmath>
+#include "Breakout/Entities/BlockManager.h"
+#include "Breakout/Constants.h"
 
 void BlockManager::createLevel(int rows, int cols)
 {
     blocks.clear();
 
-    float blockWidth = 80.f;
-    float blockHeight = 30.f;
-    float padding = 10.f; // ブロック間の隙間
+    float blockWidth = Config::BLOCK_WIDTH;
+    float blockHeight = Config::BLOCK_HEIGHT;
+    float padding = Config::BLOCK_PADDING;
 
-    float startX = 400.f - (cols / 2) * (blockWidth + padding);
-    float startY = 100.f;
+    float startX = (Config::WINDOW_WIDTH / 2) - (cols / 2) * (blockWidth + padding);
+    float startY = Config::BLOCK_Y_OFFSET;
 
     for (int i = 0; i < rows; ++i)
     {

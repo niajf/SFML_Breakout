@@ -1,0 +1,3 @@
+/Users/taiga/SFMLGames/01_Breakout/build/CMakeFiles/Breakout.dir
+/Users/taiga/SFMLGames/01_Breakout/build/CMakeFiles/edit_cache.dir
+/Users/taiga/SFMLGames/01_Breakout/build/CMakeFiles/rebuild_cache.dir

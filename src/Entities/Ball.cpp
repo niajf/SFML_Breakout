@@ -1,10 +1,10 @@
-#include <Breakout/Entities/Ball.h>
+#include "Breakout/Entities/Ball.h"
+#include "Breakout/Constants.h"
 
-const float MIN_Y_DIRECTION = 0.2f;
-
-Ball::Ball(float x, float y, int stage) : speed(300.f * (1 + 0.25f * stage))
+Ball::Ball(float x, float y, int stage)
+    : speed(Config::BALL_SPEED_BASE * (1 + Config::BALL_SPEED_COEFFICIENT * stage))
 {
-    float radius = 10.f;
+    float radius = Config::BALL_RADIUS;
     shape.setRadius(radius);
     shape.setOrigin({radius, radius}); // 中心を原点に
     shape.setPosition(sf::Vector2(x, y));
@@ -16,9 +16,6 @@ Ball::Ball(float x, float y, int stage) : speed(300.f * (1 + 0.25f * stage))
 
 void Ball::update(float dt)
 {
-    // 速度 * 時間 = 移動距離
-    // shape.move(velocity * speed * dt);
-
     // moveメソッドを用いない記法
     sf::Vector2f pos = shape.getPosition();
     pos += direction * speed * dt;
@@ -54,7 +51,7 @@ void Ball::bounceY()
 {
     direction.y = -direction.y;
 
-    if (std::abs(direction.y) < MIN_Y_DIRECTION)
+    if (std::abs(direction.y) < Config::BALL_MIN_Y_DIRECTION)
     {
         float signY = (direction.y > 0.0) ? 1.f : -1.f;
         direction.y = signY * direction.y;

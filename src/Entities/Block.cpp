@@ -1,4 +1,5 @@
 #include "Breakout/Entities/Block.h"
+#include "Breakout/Constants.h"
 
 Block::Block(float x, float y, float width, float height, sf::Color color)
     : destroyed(false)
@@ -8,7 +9,7 @@ Block::Block(float x, float y, float width, float height, sf::Color color)
     shape.setFillColor(color);
 
     // 枠線を少しつけて見やすくする（お好みで）
-    shape.setOutlineThickness(1.f);
+    shape.setOutlineThickness(Config::BLOCK_OUTLINE_SIZE);
     shape.setOutlineColor(sf::Color::Black);
 }
 

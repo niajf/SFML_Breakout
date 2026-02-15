@@ -1,44 +1,43 @@
-#include "Breakout/Scenes/GameClearScene.h"
 #include <sstream>
 #include <iomanip>
 #include <cstdint>
+#include "Breakout/Scenes/GameClearScene.h"
+#include "Breakout/Constants.h"
 
 GameClearScene::GameClearScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int score)
     : Scene(ctx),
       requestSceneChange(changeCb),
       finalScore(score),
       elapsedTime(0.f),
-      clearText(*(ctx->font), "GAME OVER!", 50),
-      scoreText(*(ctx->font), "", 30),
-      promptText(*(ctx->font), "PRESS ENTER TO NEXT GAME", 20)
+      clearText(*(ctx->font), "GAME OVER!", Config::FONT_SIZE_SUBTITLE),
+      scoreText(*(ctx->font), "", Config::FONT_SIZE_BODY),
+      promptText(*(ctx->font), "PRESS ENTER TO NEXT GAME", Config::FONT_SIZE_BODY)
 {
-    sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
-
     // 1. 背景の半透明オーバーレイ設定
-    overlay.setSize(windowSize);
+    overlay.setSize(sf::Vector2f(Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT));
     overlay.setFillColor(sf::Color(0, 0, 0, 150)); // R, G, B, Alpha(透明度)
 
-    // 2. 「STAGE CLEAR!」の設定
+    // 2. 「STAGE OVER!」の設定
     clearText.setFillColor(sf::Color::Yellow);
-    clearText.setOutlineThickness(3.f);
+    clearText.setOutlineThickness(Config::FONT_SIZE_OUTLINE_SUBTITLE);
     clearText.setOutlineColor(sf::Color::Black);
     centerTextOrigin(clearText);
-    clearText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y * 0.3f)); // 画面上部寄り
+    clearText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT * 0.3f)); // 画面上部寄り
 
     // 3. スコアテキストの設定
     std::stringstream ss;
     ss << "SCORE: " << std::setw(8) << std::setfill('0') << finalScore;
     scoreText.setString(ss.str());
     scoreText.setFillColor(sf::Color::White);
-    scoreText.setOutlineThickness(2.f);
+    scoreText.setOutlineThickness(Config::FONT_SIZE_OUTLINE_BODY);
     scoreText.setOutlineColor(sf::Color::Black);
     centerTextOrigin(scoreText);
-    scoreText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y * 0.5f)); // 画面中央
+    scoreText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT * 0.5f)); // 画面中央
 
     // 4. 操作案内テキストの設定
     promptText.setFillColor(sf::Color::White);
     centerTextOrigin(promptText);
-    promptText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y * 0.7f)); // 画面下部寄り
+    promptText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT * 0.7f)); // 画面下部寄り
 }
 
 void GameClearScene::processInput()

@@ -1,32 +1,31 @@
 #include "Breakout/Scenes/TitleScene.h"
+#include "Breakout/Constants.h"
 
 TitleScene::TitleScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb)
     : Scene(ctx),
       requestSceneChange(changeCb),
       elapsedTime(0.f),
-      titleText(*(ctx->font), "BREAKOUT", 70),
-      promptText(*(ctx->font), "PRESS ENTER TO START", 20),
-      creditText(*(ctx->font), "2026 PORTFOLIO", 12)
+      titleText(*(ctx->font), "BREAKOUT", Config::FONT_SIZE_TITLE),
+      promptText(*(ctx->font), "PRESS ENTER TO START", Config::FONT_SIZE_BODY),
+      creditText(*(ctx->font), "2026 PORTFOLIO", Config::FONT_SIZE_SMALL)
 {
-    sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
-
-    // 1. タイトルロゴの設定
+    // 1. タイトルロゴの設
+    titleBaseY = Config::WINDOW_HEIGHT * 0.35f; // 基準となる高さを保存定
     titleText.setFillColor(sf::Color::Cyan);
-    titleText.setOutlineThickness(5.f);
+    titleText.setOutlineThickness(Config::FONT_SIZE_OUTLINE_TITLE);
     titleText.setOutlineColor(sf::Color::Black);
     centerTextOrigin(titleText);
-    titleBaseY = windowSize.y * 0.35f; // 基準となる高さを保存
-    titleText.setPosition(sf::Vector2f(windowSize.x / 2.f, titleBaseY));
+    titleText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, titleBaseY));
 
     // 2. スタート案内の設定
     promptText.setFillColor(sf::Color::White);
     centerTextOrigin(promptText);
-    promptText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y * 0.65f));
+    promptText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT * 0.65f));
 
     // 3. クレジット表記（画面下部）の設定
-    creditText.setFillColor(sf::Color(150, 150, 150)); // 目立ちすぎないグレー
+    creditText.setFillColor(sf::Color(150, 150, 150));
     centerTextOrigin(creditText);
-    creditText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y * 0.9f));
+    creditText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT * 0.9f));
 }
 
 void TitleScene::processInput()

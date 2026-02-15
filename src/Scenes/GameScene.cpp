@@ -1,3 +1,4 @@
+#include "Breakout/Constants.h"
 #include "Breakout/Scenes/GameScene.h"
 
 GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int, int)> changeCb, int s, int st)
@@ -7,18 +8,16 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int, int)
       currentStage(st),
       playState(PlayState::Ready),
       readyTimer(2.0f), // 2秒間待機する
-      readyText(*(ctx->font), "READY...", 40),
-      controlsText(*(ctx->font), "MOVE A / D", 12)
+      readyText(*(ctx->font), "READY...", Config::FONT_SIZE_SUBTITLE),
+      controlsText(*(ctx->font), "MOVE A / D", Config::FONT_SIZE_SMALL)
 {
-    sf::Vector2f windowSize = sf::Vector2f(ctx->window->getSize());
-
     // 画面中央にボールを生成
-    float centerX = ctx->window->getSize().x / 2.f;
-    float centerY = ctx->window->getSize().y / 2.f;
+    float centerX = Config::WINDOW_WIDTH / 2.f;
+    float centerY = Config::WINDOW_HEIGHT / 2.f;
 
     // エンティティの初期化
     ball = std::make_unique<Ball>(centerX, centerY, currentStage);
-    paddle = std::make_unique<Paddle>(centerX, 0.8 * (ctx->window->getSize().y));
+    paddle = std::make_unique<Paddle>(centerX, Config::WINDOW_HEIGHT - Config::PADDLE_Y_OFFSET);
 
     score.setScore(s);
     score.updateText();
@@ -26,13 +25,13 @@ GameScene::GameScene(SharedContext *ctx, std::function<void(SceneType, int, int)
     // ブロックを配置
     blockManager.createLevel(4, 6);
     readyText.setFillColor(sf::Color::Yellow);
-    readyText.setOutlineThickness(3.f);
+    readyText.setOutlineThickness(Config::FONT_SIZE_OUTLINE_SUBTITLE);
     readyText.setOutlineColor(sf::Color::Black);
     centerTextOrigin(readyText);
-    readyText.setPosition(sf::Vector2f(windowSize.x / 2.f, windowSize.y / 2.f));
+    readyText.setPosition(sf::Vector2f(Config::WINDOW_WIDTH / 2.f, Config::WINDOW_HEIGHT / 2.f));
 
     controlsText.setFillColor(sf::Color(180, 180, 180, 150));
-    controlsText.setPosition({15.f, windowSize.y - 25.f});
+    controlsText.setPosition({15.f, Config::WINDOW_HEIGHT - 25.f});
 }
 
 void GameScene::processInput()
@@ -95,7 +94,7 @@ void GameScene::update(float dt)
 
         if (ball && paddle)
         {
-            collisionManager.checkWallCollision(*ball, *context->window);
+            collisionManager.checkWallCollision(*ball);
             collisionManager.checkPaddleCollision(*ball, *paddle);
             int destroyed = collisionManager.checkBlockCollision(*ball, blockManager);
 
@@ -108,7 +107,7 @@ void GameScene::update(float dt)
         }
 
         // ---ゲームオーバーに遷移---
-        if (ball && ball->getPosition().y > context->window->getSize().y)
+        if (ball && ball->getPosition().y > Config::WINDOW_HEIGHT)
         {
             requestSceneChange(SceneType::GameClear, score.getValue(), currentStage);
 
@@ -138,11 +137,6 @@ void GameScene::update(float dt)
 
 void GameScene::draw()
 {
-    sf::Text text(*(context->font), "THIS IS GAME SCENE", 30);
-    sf::FloatRect bounds = text.getLocalBounds();
-    text.setOrigin({bounds.size.x / 2.f, bounds.size.y / 2.f});
-    text.setPosition(sf::Vector2f(context->window->getSize()) / 2.f);
-
     if (ball)
         ball->draw(*(context->window));
 
@@ -157,7 +151,7 @@ void GameScene::draw()
     {
         // 少しフワフワさせる演出（TitleSceneの応用）
         float offsetY = std::sin(readyTimer * 10.f) * 5.f;
-        readyText.setPosition({context->window->getSize().x / 2.f, (context->window->getSize().y * 0.6f) + offsetY});
+        readyText.setPosition({Config::WINDOW_WIDTH / 2.f, (context->window->getSize().y * 0.6f) + offsetY});
 
         context->window->draw(readyText);
     }

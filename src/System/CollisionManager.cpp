@@ -1,9 +1,10 @@
 #include "Breakout/System/CollisionManager.h"
+#include "Breakout/Constants.h"
 #include <cmath>
 
-void CollisionManager::update(Ball &ball, Paddle &paddle, BlockManager &blockManager, const sf::RenderWindow &window)
+void CollisionManager::update(Ball &ball, Paddle &paddle, BlockManager &blockManager)
 {
-    checkWallCollision(ball, window);
+    checkWallCollision(ball);
     checkPaddleCollision(ball, paddle);
     checkBlockCollision(ball, blockManager);
 }
@@ -71,11 +72,10 @@ bool CollisionManager::resolveCollision(Ball &ball, const sf::FloatRect &targetB
     return true;
 }
 
-void CollisionManager::checkWallCollision(Ball &ball, const sf::RenderWindow &window)
+void CollisionManager::checkWallCollision(Ball &ball)
 {
     sf::Vector2f pos = ball.getPosition();
     float radius = ball.getBounds().size.x / 2.f; // 円の半径
-    sf::Vector2u winSize = window.getSize();
 
     // 左壁
     if (pos.x - radius < 0)
@@ -84,9 +84,9 @@ void CollisionManager::checkWallCollision(Ball &ball, const sf::RenderWindow &wi
         ball.bounceFromLeftWall();
     }
     // 右壁
-    else if (pos.x + radius > winSize.x)
+    else if (pos.x + radius > Config::WINDOW_WIDTH)
     {
-        ball.setPosition(sf::Vector2f(winSize.x - radius, pos.y)); // めり込み補正
+        ball.setPosition(sf::Vector2f(Config::WINDOW_WIDTH - radius, pos.y)); // めり込み補正
         ball.bounceFromRightWall();
     }
     // 天井

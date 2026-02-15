@@ -1,14 +1,15 @@
+#include <iostream>
 #include "Breakout/Game.h"
 #include "Breakout/Scenes/TitleScene.h"
 #include "Breakout/Scenes/GameScene.h"
 #include "Breakout/Scenes/GameClearScene.h"
-#include <iostream>
+#include "Breakout/Constants.h"
 
-Game::Game() : window(sf::VideoMode({800, 600}), "Breakout Refactored")
+Game::Game() : window(sf::VideoMode({Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT}), Config::WINDOW_TITLE)
 {
     // フォント読み込み（相対パス）
     // ※実行ファイルからのパスに注意
-    if (!font.openFromFile("assets/fonts/PressStart2P-Regular.ttf"))
+    if (!font.openFromFile(Config::FONT_PATH))
     {
         std::cerr << "Failed to load font!" << std::endl;
         // フォントがない場合の対策などをここに書く

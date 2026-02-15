@@ -6,8 +6,6 @@ class Score
 {
 private:
     int value;
-    const int BASE_POINT = 10; // 1ブロックあたりの基本点
-
     sf::Text scoreText;
 
 public:
