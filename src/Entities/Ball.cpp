@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Breakout/Entities/Ball.h"
 #include "Breakout/Constants.h"
 

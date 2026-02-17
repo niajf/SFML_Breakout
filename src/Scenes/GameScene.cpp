@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Breakout/Constants.h"
 #include "Breakout/Scenes/GameScene.h"
 
