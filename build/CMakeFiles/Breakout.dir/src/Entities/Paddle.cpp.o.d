@@ -1,14 +1,14 @@
 CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Users/taiga/SFMLGames/01_Breakout/src/Entities/Paddle.cpp \
   /Users/taiga/SFMLGames/01_Breakout/include/Breakout/Entities/Paddle.h \
-  /opt/homebrew/include/SFML/Graphics.hpp \
-  /opt/homebrew/include/SFML/Graphics/BlendMode.hpp \
-  /opt/homebrew/include/SFML/Graphics/Export.hpp \
-  /opt/homebrew/include/SFML/Config.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/BlendMode.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Export.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Config.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
-  /opt/homebrew/include/SFML/Graphics/CircleShape.hpp \
-  /opt/homebrew/include/SFML/Graphics/Shape.hpp \
-  /opt/homebrew/include/SFML/Graphics/Color.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/CircleShape.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Shape.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Color.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdint \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -40,20 +40,20 @@ CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h \
-  /opt/homebrew/include/SFML/Graphics/Color.inl \
-  /opt/homebrew/include/SFML/Graphics/Drawable.hpp \
-  /opt/homebrew/include/SFML/Graphics/PrimitiveType.hpp \
-  /opt/homebrew/include/SFML/Graphics/Rect.hpp \
-  /opt/homebrew/include/SFML/System/Vector2.hpp \
-  /opt/homebrew/include/SFML/System/Export.hpp \
-  /opt/homebrew/include/SFML/System/Angle.hpp \
-  /opt/homebrew/include/SFML/System/Angle.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Color.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Drawable.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/PrimitiveType.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Rect.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Vector2.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Export.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Angle.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Angle.inl \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_bounds.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
-  /opt/homebrew/include/SFML/System/Vector2.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Vector2.inl \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/optional \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__assertion_handler \
@@ -567,11 +567,11 @@ CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temporary_buffer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/unique_temporary_buffer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdexcept \
-  /opt/homebrew/include/SFML/Graphics/Rect.inl \
-  /opt/homebrew/include/SFML/Graphics/RenderStates.hpp \
-  /opt/homebrew/include/SFML/Graphics/CoordinateType.hpp \
-  /opt/homebrew/include/SFML/Graphics/StencilMode.hpp \
-  /opt/homebrew/include/SFML/Graphics/Transform.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Rect.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/RenderStates.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/CoordinateType.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/StencilMode.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Transform.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h \
@@ -676,10 +676,10 @@ CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/pstl.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/sample.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
-  /opt/homebrew/include/SFML/Graphics/Transform.inl \
-  /opt/homebrew/include/SFML/Graphics/Transformable.hpp \
-  /opt/homebrew/include/SFML/Graphics/VertexArray.hpp \
-  /opt/homebrew/include/SFML/Graphics/Vertex.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Transform.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Transformable.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/VertexArray.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Vertex.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__vector/comparison.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/vector.h \
@@ -782,12 +782,12 @@ CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_nl_item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
-  /opt/homebrew/include/SFML/Graphics/ConvexShape.hpp \
-  /opt/homebrew/include/SFML/Graphics/Font.hpp \
-  /opt/homebrew/include/SFML/Graphics/Glyph.hpp \
-  /opt/homebrew/include/SFML/Graphics/Texture.hpp \
-  /opt/homebrew/include/SFML/Window/GlResource.hpp \
-  /opt/homebrew/include/SFML/Window/Export.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/ConvexShape.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Font.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Glyph.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Texture.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/GlResource.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
@@ -846,53 +846,54 @@ CMakeFiles/Breakout.dir/src/Entities/Paddle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /opt/homebrew/include/SFML/Graphics/Image.hpp \
-  /opt/homebrew/include/SFML/Graphics/RectangleShape.hpp \
-  /opt/homebrew/include/SFML/Graphics/RenderTarget.hpp \
-  /opt/homebrew/include/SFML/Graphics/View.hpp \
-  /opt/homebrew/include/SFML/Graphics/RenderTexture.hpp \
-  /opt/homebrew/include/SFML/Window/ContextSettings.hpp \
-  /opt/homebrew/include/SFML/Graphics/RenderWindow.hpp \
-  /opt/homebrew/include/SFML/Window/VideoMode.hpp \
-  /opt/homebrew/include/SFML/Window/Window.hpp \
-  /opt/homebrew/include/SFML/Window/WindowBase.hpp \
-  /opt/homebrew/include/SFML/Window/Vulkan.hpp \
-  /opt/homebrew/include/SFML/Window/WindowEnums.hpp \
-  /opt/homebrew/include/SFML/Window/WindowHandle.hpp \
-  /opt/homebrew/include/SFML/System/Time.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Image.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/RectangleShape.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/RenderTarget.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/View.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/RenderTexture.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/ContextSettings.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/RenderWindow.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/VideoMode.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Window.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/WindowBase.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Vulkan.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/WindowEnums.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/WindowHandle.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Time.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
-  /opt/homebrew/include/SFML/System/Time.inl \
-  /opt/homebrew/include/SFML/Window/WindowBase.inl \
-  /opt/homebrew/include/SFML/Window/Event.hpp \
-  /opt/homebrew/include/SFML/Window/Joystick.hpp \
-  /opt/homebrew/include/SFML/System/String.hpp \
-  /opt/homebrew/include/SFML/System/Utf.hpp \
-  /opt/homebrew/include/SFML/System/Utf.inl \
-  /opt/homebrew/include/SFML/System/String.inl \
-  /opt/homebrew/include/SFML/Window/Keyboard.hpp \
-  /opt/homebrew/include/SFML/Window/Mouse.hpp \
-  /opt/homebrew/include/SFML/Window/Sensor.hpp \
-  /opt/homebrew/include/SFML/System/Vector3.hpp \
-  /opt/homebrew/include/SFML/System/Vector3.inl \
-  /opt/homebrew/include/SFML/Window/Event.inl \
-  /opt/homebrew/include/SFML/System/Clock.hpp \
-  /opt/homebrew/include/SFML/Graphics/Shader.hpp \
-  /opt/homebrew/include/SFML/Graphics/Glsl.hpp \
-  /opt/homebrew/include/SFML/Graphics/Glsl.inl \
-  /opt/homebrew/include/SFML/Graphics/Sprite.hpp \
-  /opt/homebrew/include/SFML/Graphics/Text.hpp \
-  /opt/homebrew/include/SFML/Graphics/VertexBuffer.hpp \
-  /opt/homebrew/include/SFML/Window.hpp \
-  /opt/homebrew/include/SFML/Window/Clipboard.hpp \
-  /opt/homebrew/include/SFML/Window/Context.hpp \
-  /opt/homebrew/include/SFML/Window/Cursor.hpp \
-  /opt/homebrew/include/SFML/Window/Touch.hpp \
-  /opt/homebrew/include/SFML/System.hpp \
-  /opt/homebrew/include/SFML/System/Err.hpp \
-  /opt/homebrew/include/SFML/System/Exception.hpp \
-  /opt/homebrew/include/SFML/System/FileInputStream.hpp \
-  /opt/homebrew/include/SFML/System/InputStream.hpp \
-  /opt/homebrew/include/SFML/System/MemoryInputStream.hpp \
-  /opt/homebrew/include/SFML/System/Sleep.hpp \
-  /Users/taiga/SFMLGames/01_Breakout/include/Breakout/Entities/GameObject.h
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Time.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/WindowBase.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Event.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Joystick.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/String.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Utf.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Utf.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/String.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Keyboard.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Mouse.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Sensor.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Vector3.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Vector3.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Event.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Clock.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Shader.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Glsl.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Glsl.inl \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/Text.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Graphics/VertexBuffer.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Clipboard.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Context.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Cursor.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/Window/Touch.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Err.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Exception.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/FileInputStream.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/InputStream.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/MemoryInputStream.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/build/_deps/sfml-src/include/SFML/System/Sleep.hpp \
+  /Users/taiga/SFMLGames/01_Breakout/include/Breakout/Entities/GameObject.h \
+  /Users/taiga/SFMLGames/01_Breakout/include/Breakout/Constants.h

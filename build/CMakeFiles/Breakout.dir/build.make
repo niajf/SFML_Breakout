@@ -255,10 +255,18 @@ Breakout: CMakeFiles/Breakout.dir/src/Entities/BlockManager.cpp.o
 Breakout: CMakeFiles/Breakout.dir/src/System/CollisionManager.cpp.o
 Breakout: CMakeFiles/Breakout.dir/src/UI/Score.cpp.o
 Breakout: CMakeFiles/Breakout.dir/build.make
-Breakout: /opt/homebrew/lib/libsfml-graphics.3.0.2.dylib
-Breakout: /opt/homebrew/lib/libsfml-window.3.0.2.dylib
-Breakout: /opt/homebrew/lib/libsfml-audio.3.0.2.dylib
-Breakout: /opt/homebrew/lib/libsfml-system.3.0.2.dylib
+Breakout: _deps/sfml-build/lib/libsfml-graphics.a
+Breakout: _deps/sfml-build/lib/libsfml-window.a
+Breakout: _deps/sfml-build/lib/libsfml-system.a
+Breakout: _deps/sfml-build/lib/libsfml-audio.a
+Breakout: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework
+Breakout: _deps/sfml-build/lib/libfreetype.a
+Breakout: _deps/sfml-build/lib/libsfml-system.a
+Breakout: _deps/sfml-build/lib/libvorbisfile.a
+Breakout: _deps/sfml-build/lib/libvorbisenc.a
+Breakout: _deps/sfml-build/lib/libvorbis.a
+Breakout: _deps/sfml-build/lib/libFLAC.a
+Breakout: _deps/sfml-build/lib/libogg.a
 Breakout: CMakeFiles/Breakout.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/taiga/SFMLGames/01_Breakout/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable Breakout"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Breakout.dir/link.txt --verbose=$(VERBOSE)
