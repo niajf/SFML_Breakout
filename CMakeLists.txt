@@ -5,7 +5,16 @@ project(01_Breakout)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(SFML 3.0 COMPONENTS Graphics Window System Audio REQUIRED)
+include(FetchContent)
+
+FetchContent_Declare(
+  SFML
+  GIT_REPOSITORY https://github.com/SFML/SFML.git
+  GIT_TAG        3.0.2
+)
+
+# これを実行することで、SFML::Graphics 等のターゲットが定義されます
+FetchContent_MakeAvailable(SFML)
 
 add_executable(Breakout 
     src/main.cpp
